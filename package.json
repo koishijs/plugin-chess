@@ -1,0 +1,48 @@
+{
+  "name": "koishi-plugin-chess",
+  "description": "Chess Plugin for Koishi",
+  "version": "1.0.0-alpha.0",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "author": "Shigma <1700011071@pku.edu.cn>",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint src --ext .ts",
+    "prepack": "tsc -b"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koishijs/plugin-image-search.git"
+  },
+  "bugs": {
+    "url": "https://github.com/koishijs/plugin-image-search/issues"
+  },
+  "homepage": "https://github.com/koishijs/plugin-image-search#readme",
+  "keywords": [
+    "bot",
+    "qqbot",
+    "cqhttp",
+    "coolq",
+    "chatbot",
+    "koishi",
+    "plugin",
+    "chess",
+    "game"
+  ],
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.15.0",
+    "@typescript-eslint/parser": "^2.15.0",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "typescript": "^3.7.4"
+  },
+  "dependencies": {
+    "koishi-core": "^1.4.0",
+    "koishi-image-utils": "^0.1.0",
+    "koishi-utils": "^1.0.2"
+  }
+}
