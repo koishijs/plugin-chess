@@ -77,9 +77,9 @@ export class State {
     })
   
     const textGroup = svg.g({
-      fontSize: '0.8',
+      fontSize: '0.75',
       fontWeight: 'normal',
-      style: 'letter-spacing: -0.6',
+      style: 'letter-spacing: -0.1',
     })
 
     const topTextGroup = textGroup.g({ textAnchor: 'middle' })
@@ -92,13 +92,14 @@ export class State {
       strokeWidth: 0.08,
     })
   
-    const textOffset = placement === 'cross' ? 0.3 : 0.8
+    const verticalOffset = placement === 'cross' ? 0.3 : 0.8
+    const horizontalOffset = placement === 'cross' ? 0 : 0.5
     for (let index = 2; index < viewSize; ++ index) {
       lineGroup.line(index, 2, index, viewSize - 1)
       lineGroup.line(2, index, viewSize - 1, index)
       if (index < size + 2) {
-        topTextGroup.text(String(index - 1), index + textOffset, 1.3)
-        leftTextGroup.text(String.fromCharCode(index + 63), 0.8, index + textOffset)
+        topTextGroup.text(String(index - 1), index + horizontalOffset, 1.3)
+        leftTextGroup.text(String.fromCharCode(index + 63), 0.8, index + verticalOffset)
       }
     }
 
@@ -170,13 +171,18 @@ export class State {
     }
   }
 
-  set (x: number, y: number, value: 1 | -1) {
+  set (x: number, y: number, value: 0 | 1 | -1) {
     const chess = this.bit(x, y)
-    let board: bigint
+    let board = 0n
     if (value === 1) {
+      this.wBoard &= ~chess
       board = this.bBoard |= chess
-    } else {
+    } else if (value === -1) {
+      this.bBoard &= ~chess
       board = this.wBoard |= chess
+    } else {
+      this.wBoard &= ~chess
+      this.bBoard &= ~chess
     }
     this.save()
     return board
