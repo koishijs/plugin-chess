@@ -23,6 +23,10 @@ function getSenderName (meta: Meta) {
   return meta.sender.card || meta.sender.nickname
 }
 
+export * from './state'
+
+export const name = 'chess'
+
 export function apply (ctx: Context) {
   ctx = ctx.intersect(ctx.app.groups)
 
