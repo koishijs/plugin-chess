@@ -65,7 +65,7 @@ export class State {
     return 0
   }
 
-  async drawImage (x?: number, y?: number) {
+  drawSvg (x?: number, y?: number) {
     const { size, placement } = this
     const viewSize = size + (placement === 'cross' ? 2 : 3)
     const svg = new SVG({ viewSize, size: Math.max(512, viewSize * 32) }).fill('white')
@@ -79,7 +79,7 @@ export class State {
     const textGroup = svg.g({
       fontSize: '0.8',
       fontWeight: 'normal',
-      style: 'font-family: Sans; letter-spacing: -0.6',
+      style: 'letter-spacing: -0.6',
     })
 
     const topTextGroup = textGroup.g({ textAnchor: 'middle' })
@@ -135,7 +135,12 @@ export class State {
         }
       }
     }
-    return svg.toCQCode()
+
+    return svg
+  }
+
+  drawImage (x?: number, y?: number) {
+    return this.drawSvg(x, y).toCQCode()
   }
 
   drawText (x?: number, y?: number) {
