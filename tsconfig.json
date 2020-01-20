@@ -2,7 +2,7 @@
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": "src",
-    "target": "es2019",
+    "target": "esnext",
     "module": "commonjs",
     "composite": true,
     "incremental": true,
